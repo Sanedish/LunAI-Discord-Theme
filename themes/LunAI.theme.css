@@ -6,28 +6,19 @@
  * @credits Chillax Squad (https://github.com/warrayquipsome/Chillax) as the base inspiration.
  */
 
-/* =========================
-   Palette & Wallpaper
-   ========================= */
 :root {
   --background-image: url("https://raw.githubusercontent.com/Sanedish/LunAI-Discord-Theme/main/assets/LunAI_background_banner_main.png");
   --wallpaper: url("https://raw.githubusercontent.com/Sanedish/LunAI-Discord-Theme/main/assets/LunAI_background_banner_main.png");
-  --bg-opacity: 100%;
-
-  --accentcolor: 65, 200, 255;
   --accentcolorV2: #41C8FF;
   --lunai-secondary: #7A4CFF;
   --lunai-highlight: #00FFD1;
   --lunai-alert: #FF3FA4;
   --lunai-success: #4DFF88;
-
   --font-name: Poppins, sans-serif;
   --group-chat-font: "Orbitron", "Monoton", sans-serif;
 }
 
-/* =========================
-   Background: Aurora + Stars
-   ========================= */
+/* Aurora & particles */
 body::before {
   content: "";
   position: fixed; inset: 0;
@@ -44,7 +35,6 @@ body::before {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
 body::after {
   content: "";
   position: fixed; inset: 0;
@@ -61,13 +51,10 @@ body::after {
   to   { background-position: 1000px 500px, -800px 600px, 600px -400px; }
 }
 
-/* =========================
-   Logo Watermark
-   ========================= */
+/* Logo watermark */
 #app-mount::after {
   content: "";
-  position: fixed;
-  bottom: 30px; right: 30px;
+  position: fixed; bottom: 30px; right: 30px;
   width: 120px; height: 120px;
   background: url("https://raw.githubusercontent.com/Sanedish/LunAI-Discord-Theme/main/assets/LunAI_logo_main_nobg.png") no-repeat center/contain;
   opacity: 0.1;
@@ -79,9 +66,7 @@ body::after {
   to   { opacity: 0.3; filter: drop-shadow(0 0 12px var(--lunai-secondary)); }
 }
 
-/* =========================
-   Glow Effects
-   ========================= */
+/* Active channel glow */
 .containerDefault-YUSmu3.selected-2TbFuo {
   background: linear-gradient(90deg, rgba(65,200,255,0.15), rgba(122,76,255,0.15));
   border-left: 3px solid var(--accentcolorV2);
@@ -91,34 +76,4 @@ body::after {
 @keyframes channel-glow {
   from { box-shadow: 0 0 8px var(--accentcolorV2); }
   to   { box-shadow: 0 0 14px var(--lunai-secondary); }
-}
-
-.mention {
-  background: rgba(255, 63, 164, 0.2);
-  color: var(--lunai-alert);
-  border-radius: 4px; padding: 2px 6px;
-  animation: mention-pulse 2s infinite;
-}
-@keyframes mention-pulse {
-  0%,100% { text-shadow: 0 0 6px var(--lunai-alert); }
-  50%     { text-shadow: 0 0 14px var(--lunai-alert); }
-}
-
-.typing-2J1mQU {
-  color: var(--lunai-highlight) !important;
-  animation: typing-pulse 1.5s infinite;
-}
-@keyframes typing-pulse {
-  0%,100% { opacity: 0.5; text-shadow: 0 0 4px var(--lunai-highlight); }
-  50%     { opacity: 1; text-shadow: 0 0 12px var(--accentcolorV2); }
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--accentcolorV2);
-  border-radius: 6px;
-  box-shadow: 0 0 6px var(--accentcolorV2);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--lunai-secondary);
-  box-shadow: 0 0 10px var(--lunai-secondary);
 }
