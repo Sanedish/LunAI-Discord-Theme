@@ -1,6 +1,6 @@
 /**
  * @name LunAI Easter Egg
- * @description Adds a hidden LunAI button that opens a popup with a video surprise.
+ * @description Adds a hidden LunAI button that opens a popup with a YouTube video.
  * @version 1.0.0
  * @author LunAI
  */
@@ -24,7 +24,7 @@ module.exports = class LunAIEasterEgg {
     });
     document.body.appendChild(btn);
 
-    // Modal container
+    // Modal
     const modal = document.createElement("div");
     modal.id = "lunai-easter-egg";
     Object.assign(modal.style, {
@@ -50,32 +50,34 @@ module.exports = class LunAIEasterEgg {
       ">
         <h2>🎉 Hooray! You found it!</h2>
         <div id="lunai-video-box" style="filter: blur(12px); cursor: pointer;">
-          <video id="lunai-video" width="560" controls>
-            <source src="https://raw.githubusercontent.com/Sanedish/LunAI-Discord-Theme/main/assets/lunai_box_easter.mp4" type="video/mp4">
-          </video>
+          <iframe id="lunai-video" width="560" height="315"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     `;
     document.body.appendChild(modal);
 
     const videoBox = modal.querySelector("#lunai-video-box");
-    const video = modal.querySelector("#lunai-video");
+    const iframe = modal.querySelector("#lunai-video");
 
     // Show modal
     btn.onclick = () => modal.style.display = "flex";
 
-    // Reveal & play video
+    // Reveal & autoplay YouTube video
     videoBox.onclick = () => {
       videoBox.style.filter = "none";
-      video.play();
+      iframe.src += "&autoplay=1";
     };
 
     // Close modal on background click
     modal.onclick = e => {
       if (e.target === modal) {
         modal.style.display = "none";
-        video.pause();
-        video.currentTime = 0;
+        iframe.src = iframe.src.replace("&autoplay=1", ""); // reset
         videoBox.style.filter = "blur(12px)";
       }
     };
